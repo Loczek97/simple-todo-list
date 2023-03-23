@@ -1,5 +1,5 @@
 import React from 'react'
 
-const InputLabel = ({ id, children, DarkTheme }) => <label htmlFor={id} className={`${DarkTheme ? 'text-white' : 'text-black'} text-lg`}>{children}</label>
+const InputLabel = ({ id, children }) => <label htmlFor={id} className={`text-white text-lg text-center`}>{children}</label>
 
 export default InputLabel

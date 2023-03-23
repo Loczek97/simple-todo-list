@@ -1,10 +1,10 @@
 import React from "react";
 import InputLabel from "./InputLabel";
 
-function TodoNameInput({ handleInputChange, name, DarkTheme }) {
+function TodoNameInput({ handleInputChange, name, theme }) {
   return (
     <>
-      <InputLabel id="todoName" DarkTheme={DarkTheme}>
+      <InputLabel id="todoName">
         Nazwa zadania:
       </InputLabel>
       <input
@@ -14,7 +14,7 @@ function TodoNameInput({ handleInputChange, name, DarkTheme }) {
         value={name}
         onChange={(e) => handleInputChange(e)}
         placeholder="Wprowadź nazwę..."
-        className={`input input-bordered w-full ${DarkTheme ? 'bg-neutral border-success text-white focus:outline-success' : 'bg-white border-neutral text-neutral focus:outline-neutral'}`}
+        className={`input input-bordered w-full ${theme}}`}
       />
     </>
   );
