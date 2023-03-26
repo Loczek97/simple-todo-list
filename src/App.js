@@ -102,7 +102,7 @@ function App() {
   }
 
   return (
-    <div className="p-8 min-h-screen grid gap-3 grid-cols-1 md:grid-cols-10">
+    <div className="flex flex-col h-screen">
       <TodoForm
         DarkTheme={DarkTheme}
         themeColors={chooseThemeColors()}
