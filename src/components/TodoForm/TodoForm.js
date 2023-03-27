@@ -19,9 +19,9 @@ function TodoForm({
   handleDeleteDoneTodos,
 }) {
   const { name, priority, date } = form;
-  const { cardColor, textPrimary, textSecondary, badge, input, checkbox } =
+  const { cardColor, textPrimary, textSecondary, input, checkbox } =
     themeColors;
-  const [OpenDrawer, setOpenDrawer] = useState(true);
+  const [OpenDrawer, setOpenDrawer] = useState(false);
 
   const handleOpenDrawer = () => {
     setOpenDrawer(!OpenDrawer);
@@ -44,7 +44,13 @@ function TodoForm({
           className="absolute top-1/2 -translate-y-1/2"
         />
       </button>
-      <div className={`absolute top-0 z-10 w-3/4 md:w-1/3 ${DarkTheme ? 'bg-black/75' : 'bg-gray-700/[0.75]'} text-base-content ${OpenDrawer ? "left-0" : "-left-3/4"} backdrop-blur-sm transition-all ease-in-out duration-300`}>
+
+      <div
+        className={`w-screen h-screen absolute top-0 left-0 z-20 ${OpenDrawer ? 'visible' : 'hidden'}`}
+        onClick={handleCloseDrawer}>
+      </div>
+
+      <div className={`absolute top-0 z-30 w-3/4 md:w-1/3 ${DarkTheme ? 'bg-black/75' : 'bg-gray-700/75'} text-base-content ${OpenDrawer ? "left-0" : "-left-3/4"} backdrop-blur-sm transition-all ease-in-out duration-300`}>
         <form
           className={`form-control w-full h-screen bg-transparent flex justify-center items-center m-auto  ${cardColor} ${textSecondary} transition-all ease-in-out duration-300`}
           onSubmit={(e) => e.preventDefault()}
@@ -109,7 +115,7 @@ function TodoForm({
           additionalClass={'absolute top-4 left-4'}
           onClick={handleCloseDrawer}
           DarkTheme={DarkTheme}
-          >
+        >
           X
         </GhostBtn>
       </div>
