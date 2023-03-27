@@ -102,7 +102,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen relative">
       <TodoForm
         DarkTheme={DarkTheme}
         themeColors={chooseThemeColors()}

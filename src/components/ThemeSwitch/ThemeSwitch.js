@@ -10,7 +10,7 @@ import React from 'react'
  */
 function ThemeSwitch({ DarkTheme, handleInputChange, additionalClass }) {
     return (
-        <button name="themeToggle" className={`btn ${DarkTheme ? 'text-white bg-gray-900/[0.65]' : 'btn-outline '} ${additionalClass}`} onClick={(e) => handleInputChange(e)}>
+        <button name="themeToggle" className={`btn ${DarkTheme ? 'text-white bg-gray-900/[0.75]' : 'bg-white text-black'} ${additionalClass}`} onClick={(e) => handleInputChange(e)}>
             {DarkTheme ? 'Ciemny' : 'Jasny'}
         </button>
     )
