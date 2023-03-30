@@ -1,14 +1,13 @@
 import React from "react";
-import classname from "classname";
 import TodoBadge from '../../ui/badge/TodoBadge.js'
 
-const Todo = ({ todo, handleTodoDone }) => {
-  const { name, priority, date, currDate, done, styles } = todo;
+const Todo = ({ todo, handleTodoDone, themeColors }) => {
+  const { name, priority, date, currDate, done } = todo;
 
-  const { primaryColor, shadowColor } = styles;
-  const hoverClasses = `hover:shadow-xl hover:${shadowColor} hover:scale-[1.03] hover:z-10 transition all duration-300 ease-in`;
-  const backgroundGradient = `bg-gradient-to-r from-black/[0.35] to-transparent`;
-  const classNames = classname(`text-white shadow-lg ${shadowColor}  ${primaryColor} ${backgroundGradient} ${hoverClasses}}`)
+  const { todoColors } = themeColors;
+
+  const hoverClasses = `hover:shadow-xl hover:scale-[1.02] transition all duration-300 ease-in-out`;
+  const classNames = `shadow-md ${hoverClasses} ${todoColors}`
 
   return (
     <div className={`card relative ${classNames} z-0`}>
@@ -23,8 +22,18 @@ const Todo = ({ todo, handleTodoDone }) => {
         <h2 className={`card-title m-auto text-center`}>
           {name}
         </h2>
-        <p>Dodano: {currDate}</p>
-        <p>Wykonać do: {date}</p>
+        <p>
+          <span className="font-bold">
+            Dodano: &nbsp;
+          </span>
+          {currDate}
+        </p>
+        <p>
+          <span className="font-bold">
+            Wykonać do: &nbsp;
+          </span>
+          {date}
+        </p>
         <div className="card-actions justify-end">
           <input
             type="checkbox"

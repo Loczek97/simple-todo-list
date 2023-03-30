@@ -41,6 +41,7 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                                 handleTodoDone={handleTodoDone}
                                 todo={todo}
                                 DarkTheme={DarkTheme}
+                                themeColors={themeColors}
                             />
                         ))}
                     </div>

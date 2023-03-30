@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./assets/index.css";
 import GetCurrentDate from "./utils/GetCurrentDate";
 import chooseTheme from "./utils/chooseTheme";
-import PickColor from "./utils/PickColor";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 import { v4 as uuidv4 } from 'uuid'
@@ -52,8 +51,7 @@ function App() {
     const { name, priority, date } = form
 
     if (name.length > 0 && date >= currDate) {
-      let styles = PickColor()
-      let newTodo = { id: uuidv4(), name, priority, date, currDate, done: false, styles }
+      let newTodo = { id: uuidv4(), name, priority, date, currDate, done: false }
       let newTodos = [...todos, newTodo]
       setTodos(newTodos)
       setForm({ name: "", priority: false, date: GetCurrentDate(), done: false })
