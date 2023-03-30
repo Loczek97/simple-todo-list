@@ -1,6 +1,6 @@
 import React from 'react'
 import Todo from './Todo/Todo'
-import CalcHowMuchDone from '../../utils/CalcHowMuchDone'
+import CalcHowMuchDone from '../../utils/TodoUtils/CalcHowMuchDone'
 import icon from '../../assets/img/icon.svg'
 import PrimaryBadge from '../ui/badge/PrimaryBadge'
 

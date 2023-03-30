@@ -19,7 +19,7 @@ function TodoForm({
   handleDeleteDoneTodos,
 }) {
   const { name, priority, date } = form;
-  const { cardColor, textPrimary, textSecondary, input, checkbox } =
+  const { textPrimary, textSecondary, input, checkbox, aside } =
     themeColors;
   const [OpenDrawer, setOpenDrawer] = useState(false);
 
@@ -30,6 +30,8 @@ function TodoForm({
   const handleCloseDrawer = () => {
     setOpenDrawer(false);
   };
+
+  console.log(aside)
 
   return (
     <>
@@ -50,9 +52,9 @@ function TodoForm({
         onClick={handleCloseDrawer}>
       </div>
 
-      <div className={`absolute top-0 z-30 w-3/4 md:w-1/3 ${DarkTheme ? 'bg-black/75' : 'bg-gray-700/75'} text-base-content ${OpenDrawer ? "left-0" : "-left-3/4"} backdrop-blur-sm transition-all ease-in-out duration-300`}>
+      <div className={`absolute top-0 z-30 w-3/4 md:w-1/3 text-base-content ${OpenDrawer ? "left-0" : "-left-3/4"} backdrop-blur-sm ${aside} transition-all ease-in-out duration-300`}>
         <form
-          className={`form-control w-full h-screen bg-transparent flex justify-center items-center m-auto  ${cardColor} ${textSecondary} transition-all ease-in-out duration-300`}
+          className={`form-control w-full h-screen bg-transparent flex justify-center items-center m-auto ${textSecondary} transition-all ease-in-out duration-300`}
           onSubmit={(e) => e.preventDefault()}
         >
           <h1
@@ -110,14 +112,16 @@ function TodoForm({
             handleInputChange={handleInputChange}
             additionalClass={`mt-8 mx-2 md:w-3/4 flex flex-col justify-center items-center`}
           />
+
+
+          <GhostBtn
+            additionalClass={'absolute top-4 right-4'}
+            onClick={handleCloseDrawer}
+            DarkTheme={DarkTheme}
+          >
+            X
+          </GhostBtn>
         </form>
-        <GhostBtn
-          additionalClass={'absolute top-4 left-4'}
-          onClick={handleCloseDrawer}
-          DarkTheme={DarkTheme}
-        >
-          X
-        </GhostBtn>
       </div>
     </>
   );

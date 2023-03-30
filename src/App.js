@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./assets/index.css";
+import GetCurrentDate from "./utils/GetCurrentDate";
+import chooseTheme from "./utils/chooseTheme";
+import PickColor from "./utils/PickColor";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
-import PickColor from "./utils/PickColor";
 import { v4 as uuidv4 } from 'uuid'
-import GetCurrentDate from "./utils/GetCurrentDate";
+
 
 
 function App() {
@@ -22,29 +24,6 @@ function App() {
     body.classList.toggle("bg-black", DarkTheme)
   }, [DarkTheme])
 
-
-  const chooseThemeColors = () => {
-    const themeColors = {
-      light: {
-        cardColor: "bg-gray-500",
-        input: 'bg-white border-info placeholder:text-gray-500 focus:outline-info',
-        checkbox: 'checkbox-info',
-        textPrimary: "text-info",
-        textSecondary: "text-black",
-        badge: 'bg-info text-black'
-      },
-      dark: {
-        cardColor: "bg-gray-700/[0.825]",
-        checkbox: 'checkbox-success',
-        input: 'bg-transparent border-success text-white focus:outline-success',
-        textPrimary: "text-success",
-        textSecondary: "text-white",
-        badge: 'badge-success'
-      }
-    }
-    if (DarkTheme) return themeColors.dark
-    return themeColors.light
-  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -101,11 +80,13 @@ function App() {
     setTodos(newTodos)
   }
 
+  const colorTheme = chooseTheme(DarkTheme)
+
   return (
     <div className="flex flex-col h-screen">
       <TodoForm
         DarkTheme={DarkTheme}
-        themeColors={chooseThemeColors()}
+        themeColors={colorTheme}
         form={form}
         handleInputChange={handleInputChange}
         handleSubmittedForm={handleSubmittedForm}
@@ -115,7 +96,7 @@ function App() {
         handleTodoDone={handleTodoDone}
         todos={todos}
         DarkTheme={DarkTheme}
-        themeColors={chooseThemeColors()}
+        themeColors={colorTheme}
       />
     </div>
   );
