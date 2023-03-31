@@ -5,6 +5,7 @@ import chooseTheme from "./utils/chooseTheme";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 import { v4 as uuidv4 } from 'uuid'
+import GetCurrentHour from "./utils/GetCurrentHour";
 
 
 
@@ -12,7 +13,8 @@ function App() {
   const [form, setForm] = useState({
     name: "",
     priority: false,
-    date: GetCurrentDate()
+    date: GetCurrentDate(),
+    time: GetCurrentHour(),
   });
   const [todos, setTodos] = useState([])
   const [DarkTheme, setDarkTheme] = useState(true);
@@ -36,8 +38,12 @@ function App() {
       let newForm = { ...form, name: value }
       setForm(newForm)
     }
-    else if (name === "todoDateValue") {
+    else if (name === "date") {
       let newForm = { ...form, date: value }
+      setForm(newForm)
+    }
+    else if (name === "time") {
+      let newForm = { ...form, time: value }
       setForm(newForm)
     }
     else if (name === "themeToggle") {
@@ -48,13 +54,13 @@ function App() {
 
   const handleSubmittedForm = () => {
     const currDate = GetCurrentDate()
-    const { name, priority, date } = form
+    const { name, priority, date, time } = form
 
     if (name.length > 0 && date >= currDate) {
-      let newTodo = { id: uuidv4(), name, priority, date, currDate, done: false }
+      let newTodo = { id: uuidv4(), name, priority, date, currDate, time, done: false }
       let newTodos = [...todos, newTodo]
       setTodos(newTodos)
-      setForm({ name: "", priority: false, date: GetCurrentDate(), done: false })
+      setForm({ name: "", priority: false, date: GetCurrentDate(), time: GetCurrentHour(), done: false })
     }
     else {
       alert("Wprowadź poprawne dane")
@@ -81,7 +87,7 @@ function App() {
   const colorTheme = chooseTheme(DarkTheme)
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="min-h-screen">
       <TodoForm
         DarkTheme={DarkTheme}
         themeColors={colorTheme}

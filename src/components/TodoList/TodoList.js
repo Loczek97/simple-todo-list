@@ -14,8 +14,8 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
     }
 
     return (
-        <div className='p-4 flex flex-col h-screen'>
-            <div className={`todo-container box-border h-screen relative rounded-md ${cardColor} ${textSecondary} mx-4`}>
+        <div className='p-4 flex flex-col min-h-screen'>
+            <div className={`todo-container relative rounded-md h-full ${cardColor} ${textSecondary} mx-4`}>
                 <div className='pt-4 flex flex-col justify-center items-center'>
                     <div className='flex flex-row justify-center items-center'>
                         <PrimaryBadge
@@ -24,7 +24,7 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                         >
                             <img src={icon} width='48px' height='48px' alt="logo" />
                         </PrimaryBadge>
-                        <h1 className={`my-2 ml-1 text-center ${textPrimary} text-3xl`}>Aktywne zadania</h1>
+                        <h1 className={`py-2 pl-1 text-center ${textPrimary} text-3xl`}>Aktywne zadania</h1>
                     </div>
 
                     <PrimaryBadge additionalClass={`mt-2 ${badge}`} padding='md'>
@@ -34,7 +34,7 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                 </div>
 
                 {todos.length > 0 ? (
-                    <div className='my-4 w-[90%] m-auto grid grid-cols-1 md:grid-cols-3 gap-6 pb-8'>
+                    <div className='mt-4 w-[90%] m-auto grid grid-cols-1 md:grid-cols-3 gap-6 pb-8'>
                         {todos.map((todo) => (
                             <Todo
                                 key={todo.id}
@@ -46,7 +46,7 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                         ))}
                     </div>
                 ) : (
-                    <div className='my-10 m-auto text-center'>
+                    <div className='py-10 m-auto text-center'>
                         <h1 className={`text-xl ${textPrimary}`}>Brak zadań do wykonania</h1>
                     </div>
                 )}

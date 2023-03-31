@@ -9,8 +9,6 @@ import React from 'react'
  * <Badge type="standard">standardowe</Badge>
  */
 export default function TodoBadge({ type, children }) {
-    console.log(type)
-
     const switchType = () => {
         switch (type) {
             case 'priority':

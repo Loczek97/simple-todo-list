@@ -1,7 +1,7 @@
 import React from 'react'
 import InputLabel from './InputLabel'
 
-export default function UniversalInput({ id, type, handleInputChange, value, theme, placeholder, label }) {
+export default function UniversalInput({ id, type, handleInputChange, value, theme, placeholder, label, additionalClass = '' }) {
     return (
         <div className="mt-8 mx-2 md:w-3/4 flex flex-col justify-center items-center">
             <InputLabel id={id}>
@@ -14,7 +14,7 @@ export default function UniversalInput({ id, type, handleInputChange, value, the
                 value={value}
                 onChange={(e) => handleInputChange(e)}
                 placeholder={placeholder}
-                className={`input input-bordered w-full ${theme}}`}
+                className={`input input-bordered w-full ${theme}} ${additionalClass}}`}
             />
         </div>
     )

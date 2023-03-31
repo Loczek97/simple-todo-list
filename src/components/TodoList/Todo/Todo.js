@@ -2,12 +2,14 @@ import React from "react";
 import TodoBadge from '../../ui/badge/TodoBadge.js'
 
 const Todo = ({ todo, handleTodoDone, themeColors }) => {
-  const { name, priority, date, currDate, done } = todo;
+  const { name, priority, date, done, time } = todo;
 
-  const { todoColors } = themeColors;
+  const { todoColors, textPrimary, textSecondary } = themeColors;
 
+
+  const doneTodo = done && 'text-pink-500';
   const hoverClasses = `hover:shadow-xl hover:scale-[1.02] transition all duration-300 ease-in-out`;
-  const classNames = `shadow-md ${hoverClasses} ${todoColors}`
+  const classNames = `shadow-md ${hoverClasses} ${todoColors} ${doneTodo}`
 
   return (
     <div className={`card relative ${classNames} z-0`}>
@@ -19,21 +21,27 @@ const Todo = ({ todo, handleTodoDone, themeColors }) => {
           </TodoBadge>
         </div>
 
-        <h2 className={`card-title m-auto text-center`}>
+        <h2 className={`card-title text-2xl m-auto text-center ${textPrimary}`}>
           {name}
         </h2>
-        <p>
-          <span className="font-bold">
-            Dodano: &nbsp;
-          </span>
-          {currDate}
-        </p>
-        <p>
-          <span className="font-bold">
-            Wykonać do: &nbsp;
-          </span>
-          {date}
-        </p>
+        <div className={`mt-3 flex flex-col justify-center items-center ${textSecondary}`}>
+          <h1>Wykonać do dnia:</h1>
+          <table className="mt-2">
+            <tbody>
+              <tr>
+                <td className="text-left">Dnia:&nbsp;</td>
+                <td className={`text-center font-bold ${textPrimary}`}>{date}</td>
+              </tr>
+              <tr>
+                <td className="text-left">Godziny: &nbsp;</td>
+                <td className={`text-center font-bold ${textPrimary}`}>{time}</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+
         <div className="card-actions justify-end">
           <input
             type="checkbox"
@@ -43,6 +51,7 @@ const Todo = ({ todo, handleTodoDone, themeColors }) => {
           />
         </div>
       </div>
+
     </div>
   );
 }

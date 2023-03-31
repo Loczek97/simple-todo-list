@@ -6,7 +6,7 @@ import UniversalInput from '../ui/inputs/UniversalInput';
 import Checkbox from '../ui/inputs/Checkbox';
 
 export default function Form({ handleInputChange, DarkTheme, handleSubmittedForm, handleDeleteDoneTodos, form, themeColors }) {
-    const { name, priority, date } = form;
+    const { name, priority, date, time } = form;
     const { textPrimary, textSecondary, input, checkbox } =
         themeColors;
 
@@ -33,14 +33,24 @@ export default function Form({ handleInputChange, DarkTheme, handleSubmittedForm
                 />
 
                 {/* date input */}
-                <UniversalInput
-                    id="todoDateValue"
-                    type="date"
-                    handleInputChange={handleInputChange}
-                    value={date}
-                    theme={input}
-                    label="Do kiedy wykonać?"
-                />
+                <div className='flex flex-row'>
+                    <UniversalInput
+                        id="date"
+                        type="date"
+                        handleInputChange={handleInputChange}
+                        value={date}
+                        theme={input}
+                        label="Do kiedy:"
+                    />
+                    <UniversalInput
+                        id="time"
+                        type="time"
+                        handleInputChange={handleInputChange}
+                        value={time}
+                        theme={input}
+                        label="Do której:"
+                    />
+                </div>
 
                 {/* priority input */}
                 <Checkbox

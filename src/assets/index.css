@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-
-#root {
-  min-height: 100dvh;
+.todo-container {
+  min-height: calc(100vh - 32px);
 }
