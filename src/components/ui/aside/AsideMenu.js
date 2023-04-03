@@ -9,7 +9,7 @@ export default function AsideMenu({ children, OpenDrawer, handleCloseDrawer, asi
                 {/*Backdrop - leave it empty!*/}
             </div>
 
-            <div className={`absolute top-0 z-30 w-3/4 md:w-1/3 text-base-content ${OpenDrawer ? "left-0" : "-left-3/4"} backdrop-blur-sm ${asideColorTheme} transition-all ease-in-out duration-300`}>
+            <div className={`absolute top-0 z-30 w-3/4 md:w-1/3 text-base-content ${OpenDrawer ? "left-0" : "-left-full md:-left-3/4"} backdrop-blur-sm ${asideColorTheme} transition-all ease-in-out duration-300`}>
                 {/*Aside Menu content*/}
                 {children}
             </div>

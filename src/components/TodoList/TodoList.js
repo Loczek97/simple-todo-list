@@ -24,7 +24,10 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                         >
                             <img src={icon} width='48px' height='48px' alt="logo" />
                         </PrimaryBadge>
-                        <h1 className={`py-2 pl-1 text-center ${textPrimary} text-3xl`}>Aktywne zadania</h1>
+                        <h1
+                            className={`md:py-2 text-center ${textPrimary} text-3xl`}>
+                            Aktywne zadania
+                        </h1>
                     </div>
 
                     <PrimaryBadge additionalClass={`mt-2 ${badge}`} padding='md'>
@@ -34,7 +37,7 @@ export default function TodoList({ DarkTheme, themeColors, todos, handleTodoDone
                 </div>
 
                 {todos.length > 0 ? (
-                    <div className='mt-4 w-[90%] m-auto grid grid-cols-1 md:grid-cols-3 gap-6 pb-8'>
+                    <div className='mt-4 w-[90%] m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8'>
                         {todos.map((todo) => (
                             <Todo
                                 key={todo.id}
